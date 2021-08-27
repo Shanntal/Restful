@@ -1,6 +1,7 @@
-import React from 'react'
-import {connect} from 'react-redux'
-
+import React from 'react';
+import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
+ 
 /**
  * COMPONENT
  */
@@ -9,7 +10,11 @@ export const Home = props => {
 
   return (
     <div>
-      <h3>Welcome, {username}</h3>
+      <h1>Hey, {username}!</h1>
+      <h4>Today is a new day with new words.</h4>
+      <Link to='/resources'>
+        <button type='button'>Get Started</button>
+      </Link>
     </div>
   )
 }

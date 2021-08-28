@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
- 
+import { getResources } from '../store/resources';
+import { getEntries } from '../store/entries';
+
 /**
  * COMPONENT
  */
 export const Home = props => {
-  const {username} = props
+  const {username, getResources, getEntries} = props
+
+  useEffect(() => {
+      getResources()
+      getEntries()
+  }, [])
+
 
   return (
     <div>
@@ -28,4 +36,9 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(Home)
+const mapDispatchToProps = {
+  getResources,
+  getEntries
+}
+
+export default connect(mapState, mapDispatchToProps)(Home)

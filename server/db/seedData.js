@@ -1,5 +1,6 @@
+const faker = require('faker')
 const User = require('./models/User');
-const Journal = require('./models/Journal');
+const Entry = require('./models/Entry');
 const Resource = require('./models/Resource');
 
 const userData = [
@@ -567,11 +568,39 @@ const resourceData = [
   }
 ]
 
+/* ORIGINAL:
 const seedData = async () => {
     Promise.all(
         resourceData.map(resource => Resource.create(resource)),
         userData.map(user => User.create(user))
     );
+}
+
+*/
+
+
+const seedData = async () => {
+  resourceData.map(resource => Resource.create(resource))
+
+    const users = []
+    for (let i = 0; i < 10; i++) {
+      const username = faker.name.firstName() + ' ' + faker.name.lastName();
+      users.push(username);
+      await User.create({
+        username: username,
+        password: '123'
+      })
+    } 
+
+    //const journals = []
+    for (let i = 0; i < 50; i++) {
+      //const username = faker.name.firstName() + ' ' + faker.name.lastName();
+      //users.push(username);
+      await Entry.create({
+        content: faker.lorem.paragraph(),
+        userId: Math.ceil(Math.random()*(10))
+      })
+    } 
 }
 
 module.exports = seedData;

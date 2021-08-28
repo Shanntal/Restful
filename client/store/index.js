@@ -4,10 +4,12 @@ import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
 import { resourcesReducer } from './resources';
+import { entriesReducer } from './entries'
 
 const reducer = combineReducers({ 
   auth,
-  resources: resourcesReducer
+  resources: resourcesReducer,
+  entries: entriesReducer
 });
 
 const middleware = composeWithDevTools(

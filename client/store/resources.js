@@ -25,7 +25,6 @@ const _createResource = (resource) => {
 
 export const getResources = () => {
     return async (dispatch) => {
-        //const { data: resources } = await axios.get('api/resources');
         const { data: resources } = await axios.get('/api/resources');
         dispatch(_getResources(resources));
     };

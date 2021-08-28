@@ -14,7 +14,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-//Shanntal change 8/9:
+//Shanntal change
 router.get('/resources/:id', async (req, res, next) => {
   try {
     const quote = await Resource.findByPk(req.params.id)
@@ -23,6 +23,16 @@ router.get('/resources/:id', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/resources/p/:id', async (req, res, next) => {
+  try {
+    const quote = await Resource.findByPk(req.params.id)
+    res.send(quote)
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.post('/:id', async (req, res, next) => {
   try {
     const resource = await Resource.update(req.body, { where: { id: req.body.id } });

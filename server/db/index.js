@@ -2,12 +2,12 @@
 const faker = require('faker');
 const db = require('./db');
 const seedData = require("./seedData");
-const Journal = require("./models/Journal");
+const Entry = require("./models/Entry");
 const User = require("./models/User");
 const Resource = require("./models/Resource")
 
-Journal.belongsTo(User);
-User.hasMany(Journal);
+Entry.belongsTo(User);
+User.hasMany(Entry);
 
 const seedDB = async() => {
   await db.sync({ force: true });
@@ -19,7 +19,7 @@ module.exports = {
   db,
   models: {
     User,
-    Journal,
+    Entry,
     Resource
   },
 };

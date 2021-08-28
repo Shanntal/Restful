@@ -5,22 +5,22 @@ import { getResources } from '../store/resources';
 
 const categories = ["love", "stress & aniexty", "family", "mourning", "friendship", "art", "life", "pets", "history", "traveling", "independence", "mental health", "relationships", "affirmation", "body positivity", "self-love", "personal growth", "Gratitude", "happiness", "career", "success", "wealth", "health"];
 
-class Quote extends React.Component {
+class Poem extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        const quotes = this.props.quotes;
-        console.log('render', quotes)
+        const poems = this.props.poems;
+        console.log('render', poems)
 
         return (
             <div>
                     {
-                    quotes.map((quote) =>
-                        <div key={quote.id}>
-                            <Link to={`/resources/quotes/${quote.id}`}>
-                                <button>{quote.category}</button>
+                    poems.map((poem) =>
+                        <div key={poem.id}>
+                            <Link to={`/resources/poems/${poem.id}`}>
+                                <button>{poem.category}</button>
                             </Link>
                        </div>
                     )}
@@ -31,7 +31,7 @@ class Quote extends React.Component {
 
 const mapState = (state) => {
     return {
-        quotes: state.resources.filter((resource) => resource.type === 'quote')
+        poems: state.resources.filter((resource) => resource.type === 'poem')
     }
 }
 
@@ -39,4 +39,4 @@ const mapState = (state) => {
 //     getResources
 // }
 
-export default connect(mapState)(Quote)
+export default connect(mapState)(Poem)

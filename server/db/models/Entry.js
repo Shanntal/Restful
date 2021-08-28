@@ -1,7 +1,7 @@
 const { STRING, TEXT, DECIMAL, INTEGER, ENUM, UUID, UUIDV4, BOOLEAN} = require('sequelize');
 const db = require('../db')
 
-const Journal = db.define('journal', {
+const Entry = db.define('entry', {
     id: {
         type: UUID,
         primaryKey: true,
@@ -13,4 +13,4 @@ const Journal = db.define('journal', {
     content: TEXT
 })
 
-module.exports = Journal;
+module.exports = Entry;
